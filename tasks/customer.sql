@@ -1,33 +1,38 @@
---*****************************************************************************
--- °í°´ Å×ÀÌºí
---*****************************************************************************
+
+-- ê³ ê° í…Œì´ë¸”
+
 create table tblCustomer (
-    CTMID            VARCHAR2(15) NOT NULL,         -- ID (PK)
-    CTMPW            VARCHAR2(64) NOT NULL,         -- ¾ÏÈ£È­µÈ ºñ¹Ð¹øÈ£ (64ÀÚ¸®)
-    CTMNO            NUMBER(8) NOT NULL,            -- ¹øÈ£
-    CTMNM            VARCHAR2(15) NOT NULL,          -- ÀÌ¸§
-    ADDR             VARCHAR2(100),                  -- ÁÖ¼Ò
-    TEL              VARCHAR2(15),                  -- ÀüÈ­¹øÈ£
-    EMAIL            VARCHAR2(30) NOT NULL ,         -- ÀÌ¸ÞÀÏ
-    ZIPCODE          CHAR(5),                       -- »õ·Î¿î ¿ìÆí¹øÈ£ (5ÀÚ¸®)
-    IS_ADMIN         CHAR(1) DEFAULT 'N',           -- °ü¸®ÀÚ ¿©ºÎ (Y/N)
-    JOINDATE         DATE NOT NULL,                 -- °¡ÀÔÀÏ
-    SALT             VARCHAR2(16) NOT NULL,         -- ÇØ½Ã °ªÀ» ¸¸µé±â À§ÇÑ °ª
-    LAST_LOGIN         NUMBER(13),                  -- ÃÖ±Ù ·Î±×ÀÎ
-    FAILED_LOGIN_COUNT NUMBER(2),                   -- ·Î±×ÀÎ ½ÇÆÐ È½¼ö
-    IS_LOCK CHAR(1) DEFAULT 'N'                     -- ÈÞ¸Õ °èÁ¤ ¿©ºÎ (Y/N)
+    CTMID            VARCHAR(15) NOT NULL,         -- ID (PK)
+    CTMPW            VARCHAR(64) NOT NULL,         -- ì•”í˜¸í™”ëœ ë¹„ë°€ë²ˆí˜¸ (64ìžë¦¬)
+    CTMNO            int(8) NOT NULL,          -- ë²ˆí˜¸
+    CTMNM            VARCHAR(15) NOT NULL,          -- ì´ë¦„
+    ADDR             VARCHAR(100),                  -- ì£¼ì†Œ
+    TEL              VARCHAR(15),                  -- ì „í™”ë²ˆí˜¸
+    EMAIL            VARCHAR(30) NOT NULL ,         -- ì´ë©”ì¼
+    ZIPCODE          CHAR(5),                       -- ìƒˆë¡œìš´ ìš°íŽ¸ë²ˆí˜¸ (5ìžë¦¬)
+    IS_ADMIN         CHAR(1) DEFAULT 'N',           -- ê´€ë¦¬ìž ì—¬ë¶€ (Y/N)
+    JOINDATE         DATE NOT NULL,                 -- ê°€ìž…ì¼
+    SALT             VARCHAR(16) NOT NULL,         -- í•´ì‹œ ê°’ì„ ë§Œë“¤ê¸° ìœ„í•œ ê°’
+    LAST_LOGIN         int(13),                  -- ìµœê·¼ ë¡œê·¸ì¸
+    FAILED_LOGIN_COUNT int(2),                   -- ë¡œê·¸ì¸ ì‹¤íŒ¨ íšŸìˆ˜
+    IS_LOCK CHAR(1) DEFAULT 'N'                     -- íœ´ë¨¼ ê³„ì • ì—¬ë¶€ (Y/N)
 );
 
--- °Ô½ÃÆÇ Å×ÀÌºí°ú ¿¬µ¿µÇ¾î¾ß ÇÏ¹Ç·Î ±âº»Å°¸¦ ID·Î ¼³Á¤
+DROP TABLE tblcustomer;
+
+SELECT Ftblcustomer * tblcustomer;
+
+-- ê²Œì‹œíŒ í…Œì´ë¸”ê³¼ ì—°ë™ë˜ì–´ì•¼ í•˜ë¯€ë¡œ ê¸°ë³¸í‚¤ë¥¼ IDë¡œ ì„¤ì •
 ALTER TABLE tblCustomer add CONSTRAINT TBLCUSTOMER_CTMID_PK PRIMARY KEY(CTMID);
 ALTER TABLE tblCustomer ADD CONSTRAINT TBLCUSTOMER_EMAIL_UK UNIQUE(EMAIL);
 
--- ½ÃÄö½º
+-- ì‹œí€€ìŠ¤tblcustomer
 CREATE SEQUENCE CUSTNO_SEQ 
 INCREMENT BY 1
 START WITH 1
 MINVALUE 1
 NOCYCLE;
 
+
 INSERT INTO tblCustomer (CTMID, CTMPW, CTMNO, CTMNM, EMAIL, IS_ADMIN, JOINDATE, SALT) 
-    VALUES('admin', 'admin', CUSTNO_SEQ.NEXTVAL, '°ü¸®ÀÚ', 'admin@projectone.co.kr', 'Y', sysdate, 'AAAABBBBCCCCDDDD');
+    VALUES('admin', 'admin', CUSTNO_SEQ.NEXTVAL, 'ê´€ë¦¬ìž', 'admin@projectone.co.kr', 'Y', sysdate, 'AAAABBBBCCCCDDDD');

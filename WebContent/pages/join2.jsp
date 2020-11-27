@@ -1,35 +1,27 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<useBean id ="mMgr" class="ch14.MemberMgr"/> 
-<%
-	response.setHeader("Cache-Control","no-store"); 
-	response.setHeader("Pragma","no-cache"); 
-	response.setDateHeader("Expires",0); 
-	if (request.getProtocol().equals("HTTP/1.1"))
-	        response.setHeader("Cache-Control", "no-cache");
-	%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="UTF-8"%>
+<%@ page import="ch14.MemberMgr" %>
+
 
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>쇼핑몰 클론 프로젝트</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Document</title>
     <link rel="stylesheet" href="../css/join.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a99df0f94f.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/underscore@1.11.0/underscore-min.js"></script>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    
+    
+   
 </head>
-    <!-- 컨테이너의 시작 -->
-    <div class="container">
-    	<jsp:include page="header.jsp"></jsp:include>
-    	
-        <!-- 본문의 시작 -->
-        <section>
-            <!-- 본문이 들어가는 래퍼 -->
-            <div class="contents-wrapper">    
-            	 <div class="main">
+
+<body>
+    <div class="header"></div>
+
+    <div class="main">
         <div class="content_login">
             <h2 class="title">회원가입</h2>
             <span>회원정보를 입력해주세요.</span>
@@ -44,21 +36,7 @@
                         </label>
                         <input type="text" id="login_id" name="id" maxlength="14">
                         <div id="idMsg" class="ability_chk">
-                        <%
-                        	request.setCharacterEncoding("EUC-KR");
-                        	if(){
-                        		
-                        		
-                        		
-                        	}
-                        		<script>
-                        	$("#login_id").focusout(function(){
-                            	var a = $(this).val;
-                            })
-                        	
-                        	</script>
-                        
-                        %> 	
+                         	
                      
                         </div>
                     </li>
@@ -120,9 +98,10 @@
                 
                   </form>
 
-        	</div>
+        </div>
 
-   	 </div>
+    </div>
+
                 <script>
                     // 주소  api
                     $("#bt_adr").click(function () {
@@ -219,16 +198,10 @@
 
                     });
                   
-                    $("#login_id").focusout(function(){
-                    	
-                    })
+                    
 
                 </script>
-            </div>
-        </section>
-    </div>
-    <!-- 라이트 박스-->
-    <div id="light-box-container">
-    </div>
-    <script type="module" src="../js/MorePage.js"></script>    
+           
+</body>
+
 </html>

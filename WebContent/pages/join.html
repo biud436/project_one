@@ -1,3 +1,7 @@
+
+
+
+<jsp:useBean id = "mMgr" class="ch14.MemberMgr"/>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +12,9 @@
     <link rel="stylesheet" href="../css/join.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    
+    
+   
 </head>
 
 <body>
@@ -182,6 +189,12 @@
                         $(".main .content_login input").trigger("blur");
 
                     });
+                    
+                    
+                    	$("#login_id").on("focusout", function(){
+                    		$(this).val()
+                    	})
+                    
 
                 </script>
             </form>

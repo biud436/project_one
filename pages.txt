@@ -15,6 +15,7 @@ header.jsp
 infopolicy.jsp
 join.html
 join.jsp
+join2.jsp
 login.jsp
 logout.jsp
 map.jsp

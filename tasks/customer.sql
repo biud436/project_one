@@ -35,4 +35,8 @@ NOCYCLE;
 
 
 INSERT INTO tblCustomer (CTMID, CTMPW, CTMNO, CTMNM, EMAIL, IS_ADMIN, JOINDATE, SALT) 
+<<<<<<< HEAD
     VALUES('admin', 'admin', CUSTNO_SEQ.NEXTVAL, 'ê´€ë¦¬ìž', 'admin@projectone.co.kr', 'Y', sysdate, 'AAAABBBBCCCCDDDD');
+=======
+    VALUES('admin', '6df48b553264e6fd617d194e5afd76ba8d893cb0f54b1a7d8c6035317874e0b5', CUSTNO_SEQ.NEXTVAL, '°ü¸®ÀÚ', 'admin@projectone.co.kr', 'Y', sysdate, '0d6b91ff7ea2bd9d');
+>>>>>>> main

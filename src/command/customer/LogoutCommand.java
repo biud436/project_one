@@ -31,7 +31,12 @@ public class LogoutCommand extends Command {
 		
 		String referer = request.getHeader("referer");
 		
-		response.sendRedirect(referer);			
+		if(referer.indexOf("modifyMemberForm.do") >= 0) {
+			response.sendRedirect("/index.jsp");
+		} else {
+			response.sendRedirect(referer);	
+		}
+					
 		
 		return null;
 	}

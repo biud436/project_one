@@ -392,6 +392,7 @@ public class CustomerDAO implements IDAO {
 	 */
 	public boolean secessionCustomer(String id, String password) {
 		boolean isSecession = false;
+		CallableStatement cs = null;
 		
 		try {
 			conn = pool.getConnection();
@@ -417,14 +418,11 @@ public class CustomerDAO implements IDAO {
 			
 			// 비밀 번호 확인 처리
 			if(isValid) {
-				
-				pstmt = conn.prepareStatement("call secessionProc(?)");
-				pstmt.setString(1, id);
-				if(pstmt.executeUpdate() > 0) {
-					isSecession = true;
-				}
-				
-				
+				cs = conn.prepareCall("{call secessionProc(?)}");
+				cs.setString(1, id);
+				cs.execute();
+				isSecession = true;
+
 			}	
 			
 		} catch (SQLException e) {
@@ -432,7 +430,7 @@ public class CustomerDAO implements IDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			pool.freeConnection(conn, pstmt);
+			pool.freeConnection(conn, cs);
 		}
 		
 		return isSecession;
@@ -446,6 +444,7 @@ public class CustomerDAO implements IDAO {
 	 */
 	public boolean secessionCustomerForAdminMode(String id) {
 		boolean isSecession = false;
+		CallableStatement cs = null;
 		
 		try {
 			conn = pool.getConnection();
@@ -453,17 +452,19 @@ public class CustomerDAO implements IDAO {
 			CustomerVO vo = getMember(id);
 				
 			
-			CallableStatement cs = conn.prepareCall("call secessionProc(?)");
+			cs = conn.prepareCall("{call secessionProc(?)}");
 			cs.setString(1, id);
 			cs.execute();
 			isSecession = true;
+			
+			cs.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			pool.freeConnection(conn, pstmt);
+			pool.freeConnection(conn, cs);
 		}
 		
 		return isSecession;

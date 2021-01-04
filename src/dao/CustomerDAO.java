@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -451,11 +452,11 @@ public class CustomerDAO implements IDAO {
 			
 			CustomerVO vo = getMember(id);
 				
-			pstmt = conn.prepareStatement("call secessionProc(?)");
-			pstmt.setString(1, id);
-			if(pstmt.executeUpdate() > 0) {
-				isSecession = true;
-			}
+			
+			CallableStatement cs = conn.prepareCall("call secessionProc(?)");
+			cs.setString(1, id);
+			cs.execute();
+			isSecession = true;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

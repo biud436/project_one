@@ -59,8 +59,6 @@ Object.assign(window, {
     });
 
     $(".forced-secession").on("click", function () {
-        alert("강제로 탈퇴시킬 회원 번호는 " + $(this).data("number"));
-
         const self = this;
 
         const id = $(this).data("number");
@@ -74,11 +72,8 @@ Object.assign(window, {
             url: "/members/foclySecessionMember.do?id=" + id,
             method: "GET",
             success: function (data) {
-                if (data.status === "success") {
-                    alert("탈퇴 처리가 완료되었습니다");
-                    // $("button.forced-secession[data-number='1568304956']").eq(0).parent().parent()[0]
-                    $(self).parent().parent().remove();
-                }
+                alert("탈퇴 처리가 완료되었습니다");
+				location.reload();
             },
             error: function (err) {
                 if (err.code === 401) {

@@ -82,7 +82,7 @@ public class SignUpCommand extends Command {
 			c.setZipCode(zipcode);
 
 			customerDAO.addCustomer(c);
-							
+										
 			response.sendRedirect("/");
 			
 			return null;				

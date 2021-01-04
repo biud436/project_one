@@ -456,6 +456,11 @@ const SDK = (() => {
              */
             const lines = texts.split(/[\r\n]+/);
             lines.forEach(line => {
+                if(line != null) {
+                    line = line.replace(/\</g, "&lt;");
+                    line = line.replace(/\>/g, "&gt;");
+                    line = line.replace(/\<[\/]*(?:SCRIPT)\>/ig, "");
+                }
                 commentRaw += `<span>${line}</span>`
             });
 

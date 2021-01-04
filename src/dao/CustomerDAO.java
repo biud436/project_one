@@ -79,7 +79,7 @@ public class CustomerDAO implements IDAO {
 				
 				c
 					.setId( 		rs.getString("CTMID") )
-					.setPassword( 	rs.getString("CTMPW") )
+					.setPasswordWithoutSalt( 	rs.getString("CTMPW") )
 					.setNo( 		rs.getInt("CTMNO") )
 					.setName( 		rs.getString("CTMNM") )
 					.setAddress(	rs.getString("ADDR") )
@@ -143,7 +143,7 @@ public class CustomerDAO implements IDAO {
 				
 				c
 					.setId(id)
-					.setPassword(hashedPassword)
+					.setPasswordWithoutSalt(hashedPassword)
 					.setNo(no)
 					.setName(name)
 					.setAddress(address)
@@ -407,6 +407,9 @@ public class CustomerDAO implements IDAO {
 			
 			boolean isValid = vo.getPassword().equals(hashedPassword);
 			
+			System.out.println("비밀번호 :" + vo.getPassword());
+			System.out.println(hashedPassword);
+			
 			if(vo.getCtmtype().equals("카카오") || vo.getCtmtype().equals("네이버")) {
 				isValid = true;
 			}
@@ -641,7 +644,7 @@ public class CustomerDAO implements IDAO {
 				
 				c
 					.setId(id)
-					.setPassword(hashedPassword)
+					.setPasswordWithoutSalt(hashedPassword)
 					.setNo(no)
 					.setName(rName)
 					.setAddress(address)

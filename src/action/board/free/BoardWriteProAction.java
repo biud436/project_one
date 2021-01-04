@@ -22,7 +22,7 @@ public class BoardWriteProAction implements Action {
    public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
          ActionForward forward=null;
 			/* request.getServletContext().getRealPath("/fileUpload"); */
-         String saveFolder= request.getServletContext().getRealPath("/upload");
+         String saveFolder= request.getServletContext().getRealPath("/uploads");
          int fileSize=5*1024*1024;      
          MultipartRequest multi=new MultipartRequest(request,
              saveFolder,

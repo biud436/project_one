@@ -60,6 +60,12 @@ public class CustomerVO {
 		return this;
 	}
 	
+	public CustomerVO setPasswordWithoutSalt(String password) {
+		this.password = password;
+		
+		return this;
+	}
+	
 	public int getNo() {
 		return no;
 	}

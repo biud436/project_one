@@ -79,7 +79,7 @@ public class CustomerDAO implements IDAO {
 				
 				c
 					.setId( 		rs.getString("CTMID") )
-					.setPassword( 	rs.getString("CTMPW") )
+					.setPasswordWithoutSalt( 	rs.getString("CTMPW") )
 					.setNo( 		rs.getInt("CTMNO") )
 					.setName( 		rs.getString("CTMNM") )
 					.setAddress(	rs.getString("ADDR") )
@@ -143,7 +143,7 @@ public class CustomerDAO implements IDAO {
 				
 				c
 					.setId(id)
-					.setPassword(hashedPassword)
+					.setPasswordWithoutSalt(hashedPassword)
 					.setNo(no)
 					.setName(name)
 					.setAddress(address)
@@ -407,6 +407,9 @@ public class CustomerDAO implements IDAO {
 			
 			boolean isValid = vo.getPassword().equals(hashedPassword);
 			
+			System.out.println("비밀번호 :" + vo.getPassword());
+			System.out.println(hashedPassword);
+			
 			if(vo.getCtmtype().equals("카카오") || vo.getCtmtype().equals("네이버")) {
 				isValid = true;
 			}
@@ -448,22 +451,10 @@ public class CustomerDAO implements IDAO {
 			
 			CustomerVO vo = getMember(id);
 				
-			// 외래키가 걸린 게시물의 댓글 삭제
-			pstmt = conn.prepareStatement("delete from tblQNABoardComments where authorID = ?");
-			pstmt.setString(1, id);
-			pstmt.executeUpdate();
-			
-			// 외래키가 걸린 게시물 삭제
-			pstmt = conn.prepareStatement("delete from tblQNABoard where authorID = ?");
-			pstmt.setString(1, id);
-			pstmt.executeUpdate();
-			
-			// 회원 탈퇴 처리
-			pstmt = conn.prepareStatement("delete from tblCustomer where CTMID = ?");
+			pstmt = conn.prepareStatement("call secessionProc(?)");
 			pstmt.setString(1, id);
 			if(pstmt.executeUpdate() > 0) {
 				isSecession = true;
-				conn.commit();
 			}
 			
 		} catch (SQLException e) {
@@ -653,7 +644,7 @@ public class CustomerDAO implements IDAO {
 				
 				c
 					.setId(id)
-					.setPassword(hashedPassword)
+					.setPasswordWithoutSalt(hashedPassword)
 					.setNo(no)
 					.setName(rName)
 					.setAddress(address)

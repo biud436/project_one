@@ -26,7 +26,7 @@ public class SecessionMemberCommand extends Command {
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 				
-		String password = request.getParameter("password");
+		String password = request.getParameter("pw");
 		
 		if(dao.secessionCustomer(id, password)) {
 			// 로그 아웃 처리

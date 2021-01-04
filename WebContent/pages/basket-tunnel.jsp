@@ -17,7 +17,7 @@
 	    	 overflow:hidden;
 	    	 overflow-x:hidden;
 	    	 overflow-y:hidden;
-	    	 height:650px;
+	    	 height:850px;
 	    	 width:100%;
 	    	 background: #F3F7FA;
 	    	 margin-bottom: 1em;
@@ -40,7 +40,7 @@
         <section>
             <!-- 본문이 들어가는 래퍼 -->
             <div class="contents-wrapper">
-            	<iframe frameBorder="0" scrolling="no" class="basket-tunnel" height="650px" width="80%" src="/pages/basket.jsp"></iframe>      
+            	<iframe id="basket" name="basket" frameBorder="0" scrolling="no" class="basket-tunnel" height="850px" width="80%" src="/pages/basket.jsp"></iframe>      
             </div>
         </section>
     </div>
@@ -50,5 +50,76 @@
     <jsp:include page="/pages/login.jsp"></jsp:include>
     <!-- index.js는 메인 용이므로 알맞은 스크립트를 사용해야 합니다-->
     <script type="module" src="<%=application.getContextPath()%>/js/MorePage.js"></script>
+    <script>
+	    jQuery.fn.serializeObject = function() {
+	        var obj = null;
+	        try {
+	            if (this[0].tagName && this[0].tagName.toUpperCase() == "FORM") {
+	                var arr = this.serializeArray();
+	                if (arr) {
+	                    obj = {};
+	                    jQuery.each(arr, function() {
+	                        obj[this.name] = this.value;
+	                    });
+	                }//if ( arr ) {
+	            }
+	        } catch (e) {
+	            alert(e.message);
+	        } finally {
+	        }
+	     
+	        return obj;
+	    };
+	    
+	    document.querySelector("#basket").addEventListener("load", function() {
+	        // 장바구니 삭제
+	        $("#basket").contents().find("#delete-selection-cart").on("click", () => {
+	        	basketSubmit();
+	        });	    
+
+	    	function basketSubmit() {
+	    		
+	            const form = document.createElement("form");
+	            form.action = "/contents/deleteCart.do";
+	            form.method = "POST";
+	            form.name = "content_form";
+	            form.id = "myform";
+	            
+	            $("#basket").contents().find(".item").each((index, elem) => {
+	            	const input = $(elem).find("input[type=checkbox]");
+	            	if(input.is(":checked")) {
+	            		const id = document.createElement("input");
+	            		id.name = "idList";
+	            		id.value = $(elem).data("id");
+	            		form.appendChild(id);
+	            	}
+	            });
+	            
+	            document.body.appendChild(form);
+	            
+	            const formJson = $("#myform").serializeObject();
+	            
+	            $.ajax({
+	            	url: "/contents/deleteCart.do",
+	            	method: "GET",
+	            	data: formJson,
+	            	success: function(data) {
+	            		console.log(status);
+	            		if(data.status === "success") {
+	            			alert("삭제 완료");
+	            			window.location.href= "/pages/basket-tunnel.jsp";
+	            		} else {
+	            			alert("삭제 실패");
+	            			window.location.href= "/pages/basket-tunnel.jsp";
+	            		}
+	            	}
+	            });
+			
+	    	}	 	    
+		       	
+	    });
+	    
+
+    </script>
 </body>
 </html>

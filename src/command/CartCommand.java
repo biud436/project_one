@@ -114,10 +114,13 @@ public class CartCommand extends Command {
 			JSONArray options = (JSONArray)data.get("options");
 			
 			List<OrderVO> orderList = new ArrayList<>();
+			if(session.getAttribute("cartList") != null) {
+				orderList = (List<OrderVO>)session.getAttribute("cartList");
+			}
 			
 			final JSONObject ref = data;
 						
-			options.forEach(raw -> {
+			for(Object raw : options) {
 				JSONObject opt = (JSONObject)raw;
 				
 				// 색상&사이즈 약칭
@@ -142,9 +145,8 @@ public class CartCommand extends Command {
 					totalPrice[0] += qty * price;
 					productNameList.add(order.getProductName());
 					
-				}
-					
-			});
+				}				
+			}
 			
 			// 상품명1 + 상품명2
 			productName = String.join(" + ", productNameList);
@@ -161,7 +163,7 @@ public class CartCommand extends Command {
 			request.setAttribute("productName", productName);
 			request.setAttribute("productId", productId);
 			
-			result.forward("/pages/basket-tunnel.jsp");
+			result.sendRedirect("/pages/basket-tunnel.jsp");
 			
 			return result;
 		}

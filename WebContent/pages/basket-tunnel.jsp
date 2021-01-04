@@ -89,15 +89,24 @@
 	            	const input = $(elem).find("input[type=checkbox]");
 	            	if(input.is(":checked")) {
 	            		const id = document.createElement("input");
-	            		id.name = "idList";
+	            		id.type = "hidden";
+	            		id.name = "idlist" + index;
 	            		id.value = $(elem).data("id");
 	            		form.appendChild(id);
 	            	}
 	            });
 	            
+          		const id = document.createElement("input");
+        		id.type = "hidden";
+        		id.name = "length";
+        		id.value = $("#basket").contents().find(".item input[type=checkbox]:checked").length;
+        		form.appendChild(id);
+	            
 	            document.body.appendChild(form);
 	            
 	            const formJson = $("#myform").serializeObject();
+	            
+	            console.log(formJson);
 	            
 	            $.ajax({
 	            	url: "/contents/deleteCart.do",

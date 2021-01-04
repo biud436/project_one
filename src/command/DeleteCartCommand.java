@@ -27,7 +27,13 @@ public class DeleteCartCommand extends Command {
 		HttpSession session = request.getSession();
 		
 		// String to int 변환
-		String[] ids = request.getParameterValues("idList");
+		int length = Integer.parseInt( request.getParameter("length") );
+		
+		String[] ids = new String[length];
+		
+		for(int i = 0; i < length; i++) {
+			ids[i] = request.getParameter("idlist" + i);
+		}
 		
 		List<Integer> list = Arrays.asList(ids)
 					.stream()

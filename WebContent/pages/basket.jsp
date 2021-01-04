@@ -123,10 +123,11 @@
     
         // 전체 선택
 	    $("#all-select-checkbox").on("click", () => {
-	    	var c = $("#all-select-checkbox").prop("checked");
-	    	
-	        $("input[type='checkbox']").prop("checked", !c);  
-	        
+	    	if($("#all-select-checkbox").prop("checked")) {
+	    		 $(".item input[type='checkbox']").prop("checked", true);  
+	    	} else {
+	    		 $(".item input[type='checkbox']").prop("checked", false);
+	    	}
         });
 
     </script>

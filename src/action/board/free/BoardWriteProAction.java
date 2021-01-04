@@ -1,5 +1,6 @@
 package action.board.free;
 
+import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -21,8 +22,22 @@ public class BoardWriteProAction implements Action {
    
    public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
          ActionForward forward=null;
-			/* request.getServletContext().getRealPath("/fileUpload"); */
-         String saveFolder= request.getServletContext().getRealPath("/upload");
+         
+         String saveFolder= request.getServletContext().getRealPath("/fileUpload");
+         
+     	try {
+    		File uploadsFolder = new File(saveFolder);
+    		
+    		// 폴더가 없으면
+    		if(!uploadsFolder.exists()) {
+    			// 생성해라
+    			uploadsFolder.mkdir();
+    		}
+    				
+    	} catch(Exception e) {
+    		e.printStackTrace();
+    	}
+         
          int fileSize=5*1024*1024;      
          MultipartRequest multi=new MultipartRequest(request,
              saveFolder,

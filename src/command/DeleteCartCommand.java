@@ -1,7 +1,9 @@
 package command;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,6 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.json.simple.JSONObject;
 
 import action.ActionResult;
 import vo.OrderVO;
@@ -23,34 +27,52 @@ public class DeleteCartCommand extends Command {
 		HttpSession session = request.getSession();
 		
 		// String to int 변환
-		String[] ids = request.getParameterValues("idList");
+		int length = Integer.parseInt( request.getParameter("length") );
+		
+		String[] ids = new String[length];
+		
+		for(int i = 0; i < length; i++) {
+			ids[i] = request.getParameter("idlist" + i);
+		}
+		
 		List<Integer> list = Arrays.asList(ids)
 					.stream()
 					.mapToInt(Integer::parseInt)
 					.boxed()
 					.collect(Collectors.toList());
 		
-		System.out.println(ids);
+		System.out.println(list);
 		
 		List<OrderVO> cartList = (List<OrderVO>)session.getAttribute("cartList");
 		
 		if(cartList != null && !cartList.isEmpty()) {
-			cartList.forEach(cart -> {				
+			
+			Iterator<OrderVO> iter = cartList.iterator();
+			
+			while(iter.hasNext()) {
+				OrderVO cart = iter.next();
+				
 				int index = cartList.indexOf(cart);
 				
 				if(list.contains(index)) {
-					cartList.remove(cart);
+					iter.remove();
 					System.out.println("장바구니에서 " + cart + "를 제거했습니다.");
 				}
-						
-			});
+			}
+
 		}
 		
 		session.setAttribute("cartList", cartList);
 		
-		result.sendRedirect("/pages/basket-tunnel.jsp");
+		JSONObject status = new JSONObject();
+		status.put("status", "success");
 		
-		return result;
+		response.setContentType("application/json; charset=utf-8");
+		response.setCharacterEncoding("UTF-8");
+		
+		PrintWriter out = response.getWriter();
+		out.println(status.toJSONString());		
+		return null;
 	}
 	
 }

@@ -120,34 +120,14 @@
     </div>
 
     <script>
+    
         // 전체 선택
 	    $("#all-select-checkbox").on("click", () => {
-	    	var c = $("#all-select-checkbox").prop("checked");
-	    	
-	        $("input[type='checkbox']").prop("checked", !c);  
-	        
-        });
-        
-        // 장바구니 삭제
-        $("#delete-selection-cart").on("click", () => {
-            const form = document.createElement("form");
-            form.action = "/contents/deleteCart.do";
-            form.method = "POST";
-            form.name = "content_form";
-            
-            $(".item").each((index, elem) => {
-            	const input = $(elem).find("input[type=checkbox]");
-            	if(input.is(":checked")) {
-            		const id = document.createElement("input");
-            		id.name = "idList";
-            		id.value = $(elem).data("id");
-            		form.appendChild(id);
-            	}
-            });
-            
-            document.body.appendChild(form);
-            document.content_form.target="_parent"; 
-            form.submit();
+	    	if($("#all-select-checkbox").prop("checked")) {
+	    		 $(".item input[type='checkbox']").prop("checked", true);  
+	    	} else {
+	    		 $(".item input[type='checkbox']").prop("checked", false);
+	    	}
         });
 
     </script>

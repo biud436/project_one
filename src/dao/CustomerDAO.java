@@ -414,23 +414,12 @@ public class CustomerDAO implements IDAO {
 			// 비밀 번호 확인 처리
 			if(isValid) {
 				
-				// 외래키가 걸린 게시물의 댓글 삭제
-				pstmt = conn.prepareStatement("delete from tblQNABoardComments where authorID = ?");
-				pstmt.setString(1, id);
-				pstmt.executeUpdate();
-				
-				// 외래키가 걸린 게시물 삭제
-				pstmt = conn.prepareStatement("delete from tblQNABoard where authorID = ?");
-				pstmt.setString(1, id);
-				pstmt.executeUpdate();
-				
-				// 회원 탈퇴 처리
-				pstmt = conn.prepareStatement("delete from tblCustomer where CTMID = ?");
+				pstmt = conn.prepareStatement("call secessionProc(?)");
 				pstmt.setString(1, id);
 				if(pstmt.executeUpdate() > 0) {
 					isSecession = true;
-					conn.commit();
 				}
+				
 				
 			}	
 			

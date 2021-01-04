@@ -499,6 +499,14 @@
         <async-supported>true</async-supported>
     </filter>
 -->
+<filter>
+	<filter-name>httpHeaderSecurity</filter-name>
+	<filter-class>org.apache.catalina.filters.HttpHeaderSecurityFilter</filter-class>
+	<init-param>
+		<param-name>antiClickJackingOption</param-name>
+		<param-value>SAMEORIGIN</param-value>
+	</init-param>
+</filter>
 
   <!-- A filter that sets character encoding that is used to decode -->
   <!-- parameters in a POST request -->
@@ -596,6 +604,10 @@
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
 -->
+<filter-mapping>
+	<filter-name>httpHeaderSecurity</filter-name>
+	<url-pattern>/*</url-pattern>
+</filter-mapping>
 
   <!-- The mapping for the Set Character Encoding Filter -->
 <!--
@@ -604,6 +616,7 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 -->
+
 
   <!-- The mapping for the Failed Request Filter -->
 <!--

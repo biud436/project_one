@@ -19,6 +19,8 @@
 <%
 	String id = (String)session.getAttribute("id");
 
+	boolean isAdminLogin = false;
+
 	if(id == null || id.equals("")) {
 		response.sendRedirect("/");
 	}
@@ -115,12 +117,12 @@
 	                        <li><a href="#currently-login-members">현재 로그인 멤버</a></li>
 	                      </ul>
 	                    </li>
-	                    <li><a href="#board-manage" style="display:none">게시물 관리</a></li>
-	<!--                     <li><a href="#all-post">상품</a></li> -->
+	                    <li><a href="#board-manage">게시물 관리</a></li>
+<!-- 	                    <li><a href="#all-post">상품</a></li> -->
 	                    <li><a href="#log">접속 로그</a></li>
 	                    <li><a href="#uploads">파일 관리</a></li>
-	                    <li><a href="#db-editor" style="display:none">상품 입고 시스템</a></li>
-	                    <li><a href="#product" style="display:none">상품 진열 시스템</a></li>
+	                    <li><a href="#db-editor">상품 입고 시스템</a></li>
+	                    <li><a href="#product">상품 진열 시스템</a></li>
 	                  </ul>
                   </nav>
             </div>
@@ -147,6 +149,7 @@
                     <p>전체 멤버 목록입니다 (총 멤버수 : ${ customerList.size() }명)</p>
                     <table id="manage-whole-member-table" class="table">
                     	<thead>
+                    		<th><input class="all-check-box" type="checkbox"></th>
                     		<th>회원 번호</th>
                     		<th>ID</th>
                     		<th>이름</th>
@@ -159,6 +162,7 @@
 
                    	<c:forEach var="vo" items="${customerList}">
                    		<tr>
+                   			<td><input type="checkbox"></td>
                    			<td><span>${vo.getNo()}</span></td>
                    			<td><span>${vo.getId()}</span></td>
                    			<td><span>${vo.getName()}</span></td>
@@ -185,6 +189,7 @@
                  	<p></p>
                     <table class="table">
                     	<thead>
+                    		<th><input class="all-check-box" type="checkbox"></th>
                     		<th>회원 번호</th>
                     		<th>ID</th>
                     		<th>이름</th>
@@ -196,6 +201,7 @@
                     	</thead>     	
                    	<c:forEach var="m" items="${customerList}">
                    		<tr>
+                   			<td><input type="checkbox"></td>
                    			<td><span>${m.getNo()}</span></td>
                    			<td><span>${m.getId()}</span></td>
                    			<td><span>${m.getName()}</span></td>
@@ -216,6 +222,7 @@
                     	List<CurrentLoginMembersVO> currentlyMembers = AdminUtil.getInstance().getCurrentLoginMembers();
                     %>
                    		<thead>
+                   			<th><input class="all-check-box" type="checkbox"></th>
                    			<th>ID</th>
                    			<th>IP</th>
                    			<th>접속 시간</th>
@@ -223,6 +230,7 @@
                     <c:set var="currentlyMembers" value="<%= currentlyMembers %>" />
                     	<c:forEach var="item" items="${currentlyMembers }">
                     		<tr>
+                    			<td><input type="checkbox"></td>
                     			<td>${ item.getId() }</td>
                     			<td>${ item.getIp() }</td>
                     			<td>${ item.getConnectTime() }</td>
@@ -230,7 +238,7 @@
                     	</c:forEach>
                     </table>
                 </div>
-                <div id="board-manage" class="content jumbotron" style="display:none">
+                <div id="board-manage" class="content jumbotron">
                 	<a name="board-manage"></a>
                     <p>게시판 관리</p>
                     <table class="table" style="height: 200px; overflow:scroll;">
@@ -240,6 +248,7 @@
                     %>
                     	<caption class="well">총 글 갯수 : <%= json.size() %> / 페이지 수 : <%= (int)(Math.ceil(json.size() / 10)) %></caption>
                     	<thead>
+                    		<th><input class="all-check-box" type="checkbox"></th>
                     		<th>글 번호</th>
                     		<th>분류</th>
                     		<th>글 제목</th>
@@ -255,6 +264,7 @@
                     			JSONObject myBoard = (JSONObject)json.get(i);
                     	%>
                     		<tr>
+                    			<td><input type="checkbox"></td>
                     			<td><%= myBoard.get("postNumber") %></td>
                     			<td><%= myBoard.get("postType") %></td>
                     			<td><a href="/pages/board-post.jsp?postNumber=<%=myBoard.get("postNumber")%>" target="_blank"><%= myBoard.get("postTitle") %></a></td>
@@ -352,12 +362,14 @@
                     	List<IpLogger> logger = AdminUtil.getInstance().getIpLogger();
                     %>
                    		<thead>
+                   			<th style="width:5%;"><input class="all-check-box" type="checkbox"></th>
                    			<th>IP</th>
                    			<th>접속 시간</th>
                    		</<thead>
                     <c:set var="logger" value="<%= logger %>" />
                     	<c:forEach var="item" items="${logger }">
                     		<tr>
+                    		    <td><input type="checkbox"></td>
                     			<td>${ item.getIp() }</td>
                     			<td>${ item.getConnectTime() }</td>
                     		</tr>
@@ -445,8 +457,8 @@
 					</tfoot>
 					</table>
                 </div>                               
-<%-- 	            <jsp:include page="./db.jsp"></jsp:include> --%>
-<%-- 	            <jsp:include page="./product.jsp"></jsp:include> --%>
+                <jsp:include page="./db.jsp"></jsp:include>
+                <jsp:include page="./product.jsp"></jsp:include>
             </div>
         </section>
         <button class="return-button btn btn-info" id="return-button"><i class="fas fa-door-open" style="color: white;">나가기</i></button>

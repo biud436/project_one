@@ -39,7 +39,7 @@ public class BoardWriteProAction implements Action {
     		e.printStackTrace();
     	}
          
->>>>>>> d1c0ac15ba91bc62fa5cd66237e42b9abe8077ff
+
          int fileSize=5*1024*1024;      
          MultipartRequest multi=new MultipartRequest(request,
              saveFolder,

@@ -412,7 +412,7 @@ public class CustomerDAO implements IDAO {
 			System.out.println("비밀번호 :" + vo.getPassword());
 			System.out.println(hashedPassword);
 			
-			if(vo.getCtmtype().equals("카카오") || vo.getCtmtype().equals("네이버")) {
+			if(vo.getCtmtype().equals("카카오") || vo.getCtmtype().equals("네이버") || vo.getCtmtype().equals("페북")) {
 				isValid = true;
 			}
 			

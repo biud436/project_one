@@ -60,7 +60,7 @@
                             </li>
                             <li>
                                 <!-- 비밀번호 --> <label for="pw" class="label1"> <span>비밀번호를
-                                        입력해주세요.</span> <span>띄어쓰기없이 영/숫자 6~14자</span>
+                                        입력해주세요.</span> <span id="password-validation">띄어쓰기없이 영/숫자 6~14자</span>
                                 </label> <input type="password" autocomplete="new-password" name="pw" id="password"
                                     maxlength="15" aria-autocomplete="list">
                                 <div id="pwd1Msg" class="ability_chk"></div>
@@ -288,6 +288,17 @@
                                 $(".main .content_login input").trigger("blur");
 
                             });
+                            
+                            
+                            $("#password").on("change", function() {
+                            	const text = $(this).val();
+                            	if(/(?=.*\d.*)(?=.*[a-zA-Z].*)(?=.*[!#\$%&\?].*).{8,}/i.exec(text)) {
+                            		$("#password-validation").text("유효한 비밀번호입니다.");
+                            	} else {
+                            		$("#password-validation").text("8자리 이상 그리고 특수문자가 들어가야 합니다.");
+                            	}
+                            });
+                            
                         </script>
                     </form>
 

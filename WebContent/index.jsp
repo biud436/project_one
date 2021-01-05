@@ -16,7 +16,7 @@
 <body>
     <!-- 컨테이너의 시작 -->
     <div class="container">
-        <jsp:include page="header.jsp"></jsp:include>
+        <jsp:include page="/header.jsp"></jsp:include>
 	 		
         <!-- 본문의 시작 -->
         <section>

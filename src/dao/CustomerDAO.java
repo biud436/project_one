@@ -187,7 +187,7 @@ public class CustomerDAO implements IDAO {
 			
 			while( rs.next() ) {
 				String ctmType = rs.getString("CTMTYPE");
-				if(ctmType.equals("네이버") || ctmType.equals("카카오")) {
+				if(ctmType.equals("네이버") || ctmType.equals("카카오") || ctmType.equals("페북")) {
 					return true;
 				}
 			}

@@ -10,7 +10,7 @@ export class ShopContentLoader extends Component {
 
         this._currentCards = 0; // 현재 카드 갯수
         this._fetchCards = 20; // 새로 가져올 카드 갯수
-        this._maxCards = 100; // 최대 카드 갯수
+        this._maxCards = 80; // 최대 카드 갯수
         this._interval = 100; // 이벤트 과대 실행 방지 용 실행 간격 100ms
         this._data = {};
 

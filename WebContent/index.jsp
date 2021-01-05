@@ -33,9 +33,12 @@
     <script type="module" src="<%=application.getContextPath()%>/js/index.js"></script>
     <%
     	String userId = (String)session.getAttribute("id");
+    	if(userId == null) {
+    		userId = "";
+    	}
     %>
     <c:set var="myId" value="<%=userId %>" />
-    <c:if test="${not empty myId}">
+   	<c:if test='<%=userId.equals("admin") %>'>
 	    <script>
 	    window.onload = function() {
 		    let uploadPanel = $(`

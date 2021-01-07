@@ -14,6 +14,11 @@ export class ShopContentLoader extends Component {
         this._interval = 300; // 이벤트 과대 실행 방지 용 실행 간격 100ms
         this._data = {};
 
+        // Create a script tag. 
+        const script = document.createElement("script");
+        script.src = "https://unpkg.com/axios/dist/axios.min.js"; 
+        document.head.appendChild(script);
+
         this._offset = {
             start: 20,
             end: 20 + this._fetchCards
@@ -77,6 +82,21 @@ export class ShopContentLoader extends Component {
 
         }, {start, end});
 
+    }
+
+    addEmptyCard() {
+
+        const child = $(                `
+            <div class="card">
+                <p>
+                </p>
+            </div>                
+        `);
+
+        $(".card-container").append(child);
+        this._items.push(child.get()[0]);
+
+        return child;
     }
 
     /**

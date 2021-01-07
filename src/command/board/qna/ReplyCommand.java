@@ -62,6 +62,7 @@ public class ReplyCommand extends Command {
 			break;
 		case "writeChild":
 			writeChild(request, response);
+			break;
 		}
 	}
 	

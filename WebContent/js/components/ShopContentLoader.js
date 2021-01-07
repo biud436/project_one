@@ -57,25 +57,19 @@ export class ShopContentLoader extends Component {
                 return;
             }
 
+            // 빈 카드를 찾아서 없앱니다.
+            $(".card").filter((i, e) => {
+                return $(e).find("a").length == 0;
+            }).remove();
+
             this._data = data;
             this._maxCards = this._data.contentData.length;
 
             console.log("시작 %d, 종료: %d", this._offset.start, this._offset.end);          
     
-            const parent = $(".card-container");
-    
-            for(let i = 0; i < count; i++) {
-                setTimeout(() => {
-                    const child = $(                `
-                    <div class="card">
-                        <p>
-                        </p>
-                    </div>                
-                    `);
-                    parent.append(child);
-    
-                    this._items.push(child.get()[0]);
-                }, 0);
+            const maxCards = this._maxCards;
+            for(let i = 0; i < maxCards; i++) {
+                setTimeout(() => this.addEmptyCard(), 0);
             }
 
             this.appendCards();
@@ -94,9 +88,19 @@ export class ShopContentLoader extends Component {
         `);
 
         $(".card-container").append(child);
-        this._items.push(child.get()[0]);
+        this.addItem(child);
 
         return child;
+    }
+
+    /**
+     * 
+     * @param {HTMLElement} child 
+     */
+    addItem(child) {
+        if(!this._items) this._items = [];
+        if(!(child instanceof HTMLElement)) child = child.get()[0];
+        this._items.push(child);
     }
 
     /**

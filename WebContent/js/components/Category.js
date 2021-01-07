@@ -24,6 +24,13 @@ const BOX = {
     BUTTON: ".header-filter-box-footer-left-button",
 }
 
+const IFONT = {
+    DOWN: "fa-caret-down",
+    UP: "fa-caret-up"
+};
+
+const START_CATEGORY_NUM = 100;
+
 /**
  * @link https://stackoverflow.com/questions/9907419/how-to-get-a-key-in-a-javascript-object-by-its-value
  * 
@@ -53,12 +60,13 @@ export class Category extends Component {
         // this._type = _CATEGORY.Type[ key ];
 
         // 카테고리 인덱스를 0 ~ 9 사이로 변경합니다.
-        this.changeIndex( parseInt(category) - 100 );
+        this.changeIndex( parseInt(category) - START_CATEGORY_NUM );
     }
 
     changeIndex(idx) {            
         // 카테고리 명을 변경합니다.
-        $(`${BOX.BUTTON} em`).text( _CATEGORY.KEYS[idx] );   
+        const buttonName = $(`${BOX.BUTTON} em`);
+        buttonName.text( _CATEGORY.KEYS[idx] );
 
         // 현재 카테고리 객체를 클릭 처리합니다.
         const currentCategory = $($(BOX.CATEGORIES).eq(idx));
@@ -80,7 +88,7 @@ export class Category extends Component {
             self.changeIndex(idx);
 
             const params = new URLSearchParams(location.search);
-            params.set("category", 100 + idx);
+            params.set("category", START_CATEGORY_NUM + idx);
             location.search = params.toString();
         });
 
@@ -88,14 +96,16 @@ export class Category extends Component {
         $(BOX.FOOTER_LEFT).on("mouseover", (ev) => {
             const isVisible = $(BOX.DROPDOWN_MENU).is(":visible");
             if(isVisible) {
-                $(ev.currentTarget).find("i").removeClass("fa-caret-down");
-                $(ev.currentTarget).find("i").addClass("fa-caret-up");
+                const elem = $(ev.currentTarget).find("i");
+                elem.removeClass(IFONT.DOWN);
+                elem.addClass(IFONT.UP);
             }
         });
 
         $(BOX.FOOTER_LEFT).on("mouseout", (ev) => {
-            $(ev.currentTarget).find("i").removeClass("fa-caret-up");
-            $(ev.currentTarget).find("i").addClass("fa-caret-down");
+            const elem = $(ev.currentTarget).find("i");
+            elem.removeClass(IFONT.UP);
+            elem.addClass(IFONT.DOWN);
         })                  
     }
 

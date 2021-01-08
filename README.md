@@ -17,8 +17,8 @@ and the project called 'Project One' consists with below specs :
 | MariaDB | LGPL | https://mariadb.com |
 | jQuery | MIT | https://jquery.org/license/ |
 | QuillJS | BSD 3, Clause  | https://github.com/quilljs/quill/blob/develop/LICENSE |
-| 아임포트(카카오페이) |<td colspan=2>https://github.com/iamport/iamport-rest-client-java ||
-| SmartEditor2 | <td colspan=2>https://developers.naver.com/products/terms/ ||
+| 아임포트(카카오페이) |<td colspan=2>https://github.com/iamport/iamport-rest-client-java |
+| SmartEditor2 | <td colspan=2>https://developers.naver.com/products/terms/ |
 | SCSS | MIT | https://github.com/duojs/sass/blob/master/license |
 | underscore.js | MIT | https://github.com/jashkenas/underscore/blob/master/LICENSE |
 | 네이버 로그인 SDK | <td colspan=2>https://developers.naver.com/products/terms/ ||
@@ -31,9 +31,9 @@ and the project called 'Project One' consists with below specs :
 | JavaBeans(TM) Activation Framework | CDDL 1.0 | https://mvnrepository.com/artifact/javax.activation/activation/1.1.1 |
 | JWT | Apache 2.0 | https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt/0.9.0 |
 | Java Mail API | CDDL, GPL 2.0 | https://mvnrepository.com/artifact/javax.mail/mail/1.4.7 |
-| Java Multipart Request | <td colspan=2>http://www.servlets.com/cos/license.html ||
+| Java Multipart Request | <td colspan=2>http://www.servlets.com/cos/license.html |
 | Selenium | Apache 2.0 | https://www.selenium.dev/ |
-| Font Awesome | <td colspan=2>https://fontawesome.com/license/free ||
+| Font Awesome | <td colspan=2>https://fontawesome.com/license/free |
 | Bootstrap | MIT | https://getbootstrap.com/docs/4.0/about/license/ |
 | jQuery.filterTable | MIT | https://github.com/sunnywalker/jQuery.FilterTable |
 | jQuery.fancyTable | MIT | https://github.com/myspace-nu/jquery.fancyTable |

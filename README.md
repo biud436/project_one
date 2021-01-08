@@ -126,7 +126,6 @@ and the project called 'Project One' consists with below specs :
             <td>Java Multipart Request</td>
             <td align="center" colspan="2"><a href="http://www.servlets.com/cos/license.html"
                     rel="nofollow">http://www.servlets.com/cos/license.html</a></td>
-            <td></td>
         </tr>
         <tr>
             <td>Selenium</td>
@@ -135,7 +134,6 @@ and the project called 'Project One' consists with below specs :
         </tr>
         <tr>
             <td>Font Awesome</td>
-            <td align="center"></td>
             <td colspan="2"><a href="https://fontawesome.com/license/free"
                     rel="nofollow">https://fontawesome.com/license/free</a></td>
         </tr>

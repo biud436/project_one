@@ -8,7 +8,7 @@ and the project called 'Project One' consists with below specs :
 |Maria DB|10.3.25-MariaDB-0ubuntu0.20.04.1|
 |Tomcat|9|
 |port|8080, 9988(dev-channel)|
-|서버 상태|[![Node.js CI](http://biud436.com:9003/badge.svg)](https://biud436.com:9001)|
+|서버 상태|[![Node.js CI](http://biud436.com:9003/project_one)](https://biud436.com:9001)|
 
 # License
 

@@ -134,7 +134,7 @@ and the project called 'Project One' consists with below specs :
         </tr>
         <tr>
             <td>Font Awesome</td>
-            <td colspan="2"><a href="https://fontawesome.com/license/free"
+            <td align="center" colspan="2"><a href="https://fontawesome.com/license/free"
                     rel="nofollow">https://fontawesome.com/license/free</a></td>
         </tr>
         <tr>

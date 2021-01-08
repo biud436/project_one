@@ -44,14 +44,14 @@ and the project called 'Project One' consists with below specs :
         </tr>
         <tr>
             <td>아임포트(카카오페이)</td>
-            <td colspan="2"><a
+            <td align="center" colspan="2"><a
                     href="https://github.com/iamport/iamport-rest-client-java">https://github.com/iamport/iamport-rest-client-java</a>
             </td>
             <td></td>
         </tr>
         <tr>
             <td>SmartEditor2</td>
-            <td colspan="2"><a href="https://developers.naver.com/products/terms/"
+            <td align="center" colspan="2"><a href="https://developers.naver.com/products/terms/"
                     rel="nofollow">https://developers.naver.com/products/terms/</a></td>
             <td></td>
         </tr>
@@ -71,7 +71,7 @@ and the project called 'Project One' consists with below specs :
         </tr>
         <tr>
             <td>네이버 로그인 SDK</td>
-            <td colspan="2"><a href="https://developers.naver.com/products/terms/"
+            <td align="center" colspan="2"><a href="https://developers.naver.com/products/terms/"
                     rel="nofollow">https://developers.naver.com/products/terms/</a></td>
             <td></td>
         </tr>
@@ -127,7 +127,7 @@ and the project called 'Project One' consists with below specs :
         </tr>
         <tr>
             <td>Java Multipart Request</td>
-            <td colspan="2"><a href="http://www.servlets.com/cos/license.html"
+            <td align="center" colspan="2"><a href="http://www.servlets.com/cos/license.html"
                     rel="nofollow">http://www.servlets.com/cos/license.html</a></td>
             <td></td>
         </tr>

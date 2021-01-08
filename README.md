@@ -17,19 +17,21 @@ and the project called 'Project One' consists with below specs :
 | MariaDB | LGPL | https://mariadb.com |
 | jQuery | MIT | https://jquery.org/license/ |
 | QuillJS | BSD 3, Clause  | https://github.com/quilljs/quill/blob/develop/LICENSE |
-| 네이버 스마트 에디터 | https://developers.naver.com/products/terms/ | https://github.com/naver/smarteditor2 |
+| 아임포트(카카오페이) | - | https://github.com/iamport/iamport-rest-client-java
+| SmartEditor2 | https://developers.naver.com/products/terms/ | https://github.com/naver/smarteditor2 |
 | SCSS | MIT | https://github.com/duojs/sass/blob/master/license |
-| undercore.js | MIT | https://github.com/jashkenas/underscore/blob/master/LICENSE |
-| 네이버 로그인 API | https://developers.naver.com/products/terms/ | https://developers.naver.com/docs/login/overview/ |
-| 카카오 로그인 API | MIT | https://developers.kakao.com/docs/latest/ko/kakaologin/common |
-| 페이스북 로그인 API | MIT | - |
+| underscore.js | MIT | https://github.com/jashkenas/underscore/blob/master/LICENSE |
+| 네이버 로그인 SDK | https://developers.naver.com/products/terms/ | https://developers.naver.com/docs/login/overview/ |
+| 카카오 로그인 SDK | MIT | https://developers.kakao.com/docs/latest/ko/kakaologin/common |
+| 페이스북 로그인 SDK | MIT | - |
+| 페이스북 소셜 댓글 | MIT | - |
 | 다음 우편 번호 서비스 | Free | http://postcode.map.daum.net/ |
 | EmailJS | Free Version | https://www.emailjs.com/ |
 | JSON.simple | Apache 2.0 | https://mvnrepository.com/artifact/com.googlecode.json|simple/json|simple/1.1.1 |
 | JavaBeans(TM) Activation Framework | CDDL 1.0 | https://mvnrepository.com/artifact/javax.activation/activation/1.1.1 |
-| JSON Web Token Support For The JVM | Apache 2.0 | https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt/0.9.0 |
-| JavaMail API | CDDL, GPL 2.0 | https://mvnrepository.com/artifact/javax.mail/mail/1.4.7 |
-| Java MultipartRequest | http://www.servlets.com/cos/license.html | http://www.servlets.com/cos/ |
+| JWT | Apache 2.0 | https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt/0.9.0 |
+| Java Mail API | CDDL, GPL 2.0 | https://mvnrepository.com/artifact/javax.mail/mail/1.4.7 |
+| Java Multipart Request | http://www.servlets.com/cos/license.html | http://www.servlets.com/cos/ |
 | Selenium | Apache 2.0 | https://www.selenium.dev/ |
 | Font Awesome | https://fontawesome.com/license/free | https://fontawesome.com/ |
 | Bootstrap | MIT | https://getbootstrap.com/docs/4.0/about/license/ |

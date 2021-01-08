@@ -1,3 +1,5 @@
+[![Status](http://biud436.com:9000/.png)](http://biud436.com:9000)
+
 # Introduction
 We have implemented a template site through JSP(Java Server Page)
 and the project called 'Project One' consists with below specs :

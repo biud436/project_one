@@ -17,8 +17,8 @@ and the project called 'Project One' consists with below specs :
 | MariaDB | LGPL | https://mariadb.com |
 | jQuery | MIT | https://jquery.org/license/ |
 | QuillJS | BSD 3, Clause  | https://github.com/quilljs/quill/blob/develop/LICENSE |
-| 아임포트(카카오페이) |<td colspan=2>https://github.com/iamport/iamport-rest-client-java |
-| SmartEditor2 | <td colspan=2>https://developers.naver.com/products/terms/ |
+| 아임포트(카카오페이) |<td colspan=2>https://github.com/iamport/iamport-rest-client-java
+| SmartEditor2 | <td colspan=2>https://developers.naver.com/products/terms/
 | SCSS | MIT | https://github.com/duojs/sass/blob/master/license |
 | underscore.js | MIT | https://github.com/jashkenas/underscore/blob/master/LICENSE |
 | 네이버 로그인 SDK | <td colspan=2>https://developers.naver.com/products/terms/ ||

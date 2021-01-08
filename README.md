@@ -47,13 +47,11 @@ and the project called 'Project One' consists with below specs :
             <td align="center" colspan="2"><a
                     href="https://github.com/iamport/iamport-rest-client-java">https://github.com/iamport/iamport-rest-client-java</a>
             </td>
-            <td></td>
         </tr>
         <tr>
             <td>SmartEditor2</td>
             <td align="center" colspan="2"><a href="https://developers.naver.com/products/terms/"
                     rel="nofollow">https://developers.naver.com/products/terms/</a></td>
-            <td></td>
         </tr>
         <tr>
             <td>SCSS</td>
@@ -73,7 +71,6 @@ and the project called 'Project One' consists with below specs :
             <td>네이버 로그인 SDK</td>
             <td align="center" colspan="2"><a href="https://developers.naver.com/products/terms/"
                     rel="nofollow">https://developers.naver.com/products/terms/</a></td>
-            <td></td>
         </tr>
         <tr>
             <td>카카오 로그인 SDK</td>
@@ -141,7 +138,6 @@ and the project called 'Project One' consists with below specs :
             <td align="center"></td>
             <td colspan="2"><a href="https://fontawesome.com/license/free"
                     rel="nofollow">https://fontawesome.com/license/free</a></td>
-            <td></td>
         </tr>
         <tr>
             <td>Bootstrap</td>

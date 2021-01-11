@@ -10,14 +10,9 @@ export class ShopContentLoader extends Component {
 
         this._currentCards = 0; // 현재 카드 갯수
         this._fetchCards = 20; // 새로 가져올 카드 갯수
-        this._maxCards = 40; // 최대 카드 갯수
-        this._interval = 300; // 이벤트 과대 실행 방지 용 실행 간격 100ms
+        this._maxCards = 100; // 최대 카드 갯수
+        this._interval = 100; // 이벤트 과대 실행 방지 용 실행 간격 100ms
         this._data = {};
-
-        // Create a script tag. 
-        const script = document.createElement("script");
-        script.src = "https://unpkg.com/axios/dist/axios.min.js"; 
-        document.head.appendChild(script);
 
         this._offset = {
             start: 20,
@@ -57,50 +52,31 @@ export class ShopContentLoader extends Component {
                 return;
             }
 
-            // 빈 카드를 찾아서 없앱니다.
-            $(".card").filter((i, e) => {
-                return $(e).find("a").length == 0;
-            }).remove();
-
             this._data = data;
             this._maxCards = this._data.contentData.length;
 
             console.log("시작 %d, 종료: %d", this._offset.start, this._offset.end);          
     
-            const maxCards = this._maxCards;
-            for(let i = 0; i < maxCards; i++) {
-                setTimeout(() => this.addEmptyCard(), 0);
+            const parent = $(".card-container");
+    
+            for(let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const child = $(                `
+                    <div class="card">
+                        <p>
+                        </p>
+                    </div>                
+                    `);
+                    parent.append(child);
+    
+                    this._items.push(child.get()[0]);
+                }, 0);
             }
 
             this.appendCards();
 
         }, {start, end});
 
-    }
-
-    addEmptyCard() {
-
-        const child = $(                `
-            <div class="card">
-                <p>
-                </p>
-            </div>                
-        `);
-
-        $(".card-container").append(child);
-        this.addItem(child);
-
-        return child;
-    }
-
-    /**
-     * 
-     * @param {HTMLElement} child 
-     */
-    addItem(child) {
-        if(!this._items) this._items = [];
-        if(!(child instanceof HTMLElement)) child = child.get()[0];
-        this._items.push(child);
     }
 
     /**

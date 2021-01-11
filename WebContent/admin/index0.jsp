@@ -27,9 +27,13 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 페이지</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
   <style>
   	.left {
   		position: fixed;
@@ -98,42 +102,30 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
     <div class="container col-md-12">
         <section class="col-md-12">
-			<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-			  <div class="container-fluid">
-			    <div class="navbar-header">
-			      <a class="navbar-brand" href="#main">관리자</a>
-			    </div>
-			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-			    <span class="navbar-toggler-icon"></span>
-			  </button>		
-			  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-			    <ul class="nav navbar-nav">
-			      <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
-			      <li class="nav-item dropdown">
-			          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-			            멤버 관리
-			          </a>
-			        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#manage-whole-member">전체 멤버 관리</a>
-                        <a class="dropdown-item" href="#manage-forced-secession">강제 탈퇴 관리</a>
-                        <a class="dropdown-item" href="#currently-login-members">현재 로그인 멤버</a>
-			        </div>
-			      </li>
-			      <li class="nav-item"><a class="nav-link" href="#board-manage" style="display:none">게시물 관리</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#log">접속 로그</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#uploads">파일 관리</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#db-editor" style="display:none">상품 입고 시스템</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#product" style="display:none">상품 진열 시스템</a></li>			      
-			    </ul>			  
-			    <div class="d-flex mr-0">
-			    	<button class="btn btn-primary me-2" id="return-button">나가기</button>
-			    </div>
-			  </div>	    
-
-			  </div>
-			</nav>        
-            <div class="content-wrapper wall col-md-12 mt-3">
-                <div id="main" class="alert alert-secondary" role="alert">
+            <div class="left wall col-md-3">
+            	<nav class="navbar col-md-3 left">
+	                <ul class="nav nav-pills nav-stacked">
+	                    <li class="active"><a href="#main">메인</a></li>
+	                    <li class="dropdown">
+	                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">멤버 관리
+	                      <span class="caret"></span></a>
+	                      <ul class="dropdown-menu">
+	                        <li><a href="#manage-whole-member">전체 멤버 관리</a></li>
+	                        <li><a href="#manage-forced-secession">강제 탈퇴 관리</a></li>
+	                        <li><a href="#currently-login-members">현재 로그인 멤버</a></li>
+	                      </ul>
+	                    </li>
+	                    <li><a href="#board-manage" style="display:none">게시물 관리</a></li>
+	<!--                     <li><a href="#all-post">상품</a></li> -->
+	                    <li><a href="#log">접속 로그</a></li>
+	                    <li><a href="#uploads">파일 관리</a></li>
+	                    <li><a href="#db-editor" style="display:none">상품 입고 시스템</a></li>
+	                    <li><a href="#product" style="display:none">상품 진열 시스템</a></li>
+	                  </ul>
+                  </nav>
+            </div>
+            <div class="right content-wrapper wall col-md-9">
+                <div id="main" class="content jumbotron media">
                     <p>관리자 페이지에 오신 것을 환영합니다.</p>
                     <p><span class="col-md-2"><%=id %></span>님 환영합니다. </p>
                     <p>서버 OS : <%=System.getProperty("os.name") %></p>
@@ -145,7 +137,7 @@
 <%--                     <p>호스트 주소 : <%= request.getRemoteHost()%> </p> --%>
 <%--                     <p>포트 : <%= request.getRemotePort()%> </p> --%>
                 </div>
-                <div id="manage-whole-member" class="alert alert-success">
+                <div id="manage-whole-member" class="content jumbotron">
                    	<%
                    		CustomerDAO customerDAO = CustomerDAO.getInstance();
                    		List<CustomerVO> customerList = customerDAO.listMembers();
@@ -179,15 +171,15 @@
                    	</c:forEach>
 
                    	<tfoot>
-                   		<div class="input-group mb-3">
-                   			<label for="search" class="input-group-text">검색 하기</label>
+                   		<div class="form-group">
+                   			<label for="search">검색 하기</label>
                    			<input type="search" name="search" id="search-specific-member" class="form-control">
-                   			<input type="submit" value="검색하기" class="btn btn-info" id="search-specific-member-button">
+                   			<input type="submit" value="검색하기" class="btn btn-default" id="search-specific-member-button">
                    		</div>
                    	</tfoot>
                     </table>
                 </div>
-                <div id="manage-forced-secession" class="alert alert-secondary">
+                <div id="manage-forced-secession" class="content jumbotron">
              	   <a name="manage-forced-secession"></a>
                     <p>강제 탈퇴 관리</p>
                  	<p></p>
@@ -216,7 +208,7 @@
                    	  </c:forEach>
                    	</table>         	
                 </div>
-                <div id="manage-forced-secession" class="alert alert-secondary">
+                <div id="manage-forced-secession" class="content jumbotron">
                 	<a name="currently-login-members"></a>
                 	<p>현재 로그인중인 멤버</p>
                     <table class="table" style="height: 220px; overflow:scroll;">
@@ -238,7 +230,7 @@
                     	</c:forEach>
                     </table>
                 </div>
-                <div id="board-manage" class="alert alert-secondary" style="display:none">
+                <div id="board-manage" class="content jumbotron" style="display:none">
                 	<a name="board-manage"></a>
                     <p>게시판 관리</p>
                     <table class="table" style="height: 200px; overflow:scroll;">
@@ -293,7 +285,7 @@
                     	</tfoot>
                     </table>
                 </div>                
-				<div id="all-post" class="alert alert-secondary" style="display:none;">
+				<div id="all-post" class="content jumbotron" style="display:none;">
 					<a name="all-post"></a>
                     <p>상품</p>
                     <canvas id="myChart" width="400" height="200"></canvas>
@@ -346,7 +338,7 @@
 
                     </script>
                 </div>   
-				<div id="log" class="alert alert-secondary">
+				<div id="log" class="content jumbotron">
 					<a name="log"></a>
                     <p><strong>접속 로그</strong></p>
                     <div class="panel panel-default">
@@ -372,7 +364,7 @@
                     	</c:forEach>
                     </table>
                 </div>                               
-				<div id="uploads" class="alert alert-secondary">
+				<div id="uploads" class="content jumbotron">
 					<a name="uploads"></a>
                     <p>업로드된 파일 관리</p>
                     <div class="panel panel-default">
@@ -457,7 +449,7 @@
 <%-- 	            <jsp:include page="./product.jsp"></jsp:include> --%>
             </div>
         </section>
-<!--         <button class="return-button btn btn-info" ><i class="fas fa-door-open" style="color: white;">나가기</i></button> -->
+        <button class="return-button btn btn-info" id="return-button"><i class="fas fa-door-open" style="color: white;">나가기</i></button>
     </div>
     
     <!-- 회원 정보 수정 창  -->

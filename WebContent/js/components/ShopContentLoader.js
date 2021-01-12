@@ -58,11 +58,12 @@ export class ShopContentLoader extends Component {
             console.log("시작 %d, 종료: %d", this._offset.start, this._offset.end);          
     
             const parent = $(".card-container");
+            parent.addClass("row");
     
             for(let i = 0; i < count; i++) {
                 setTimeout(() => {
                     const child = $(                `
-                    <div class="card">
+                    <div class="card col-3 col-sm-2">
                         <p>
                         </p>
                     </div>                
@@ -129,7 +130,7 @@ export class ShopContentLoader extends Component {
 
                 if(!card) {
                     const child = $(                `
-                    <div class="card">
+                    <div class="card col-3 col-sm-2">
                         <p>
                         </p>
                     </div>                

@@ -8,7 +8,7 @@
 	List<SearchVO> searchList = service.getList();
 	
 %>		
-		<c:set var="searchList" value="<%= searchList %>" />
+		<c:set var="searchList" value="<%= searchList %>" />		
         <!-- 헤더의 시작 -->
         <header>
        	
